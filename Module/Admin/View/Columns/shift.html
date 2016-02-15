@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>栏目转移</title>
+<link href="{skin:'Css/css.css'}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<form method="post" action="{app_url:'/article/move'}" class="form">
+
+选择栏目:<select class="inputxt" id="columnsid" name="columnsid" datatype="*" nullmsg="请选择归属栏目！" errormsg="请添加{$v['item']}栏目">
+						{$classSelect}
+					</select><br><br>
+					<input type="hidden" name="data" value="{$_GET['data']}">
+<input type="submit" class="inputxt" value="确定转移">
+</form>
+
+</body>
+</html>

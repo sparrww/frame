@@ -1,0 +1,12 @@
+时间：2016-01-24 13:56:48
+路径：\
+内容：admin 修改网站基本信息
+时间：2016-01-24 14:57:33
+路径：\
+内容：admin 添加权限ceshi
+时间：2016-01-24 17:04:19
+路径：admin\Controller\articleController\save
+内容：admin 编辑文章　乘车路线
+时间：2016-01-24 17:04:25
+路径：admin\Controller\powerController\save
+内容：admin 编辑权限ceshi

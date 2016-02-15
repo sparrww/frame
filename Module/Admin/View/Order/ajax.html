@@ -1,0 +1,140 @@
+<style>
+    .bordered {
+        width: 600px;
+        margin: 40px auto;
+        font-family: 'trebuchet MS', 'Lucida sans', Arial;
+        font-size: 14px;
+        color: #444;
+        *border-collapse: collapse; /* IE7 and lower */
+        border-spacing: 0;
+        width: 100%;
+        border: solid #ccc 1px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        -webkit-box-shadow: 0 1px 1px #ccc;
+        -moz-box-shadow: 0 1px 1px #ccc;
+        box-shadow: 0 1px 1px #ccc;
+    }
+    .bordered tr:hover {
+        background: #fbf8e9;
+        -o-transition: all 0.1s ease-in-out;
+        -webkit-transition: all 0.1s ease-in-out;
+        -moz-transition: all 0.1s ease-in-out;
+        -ms-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+    }
+    .bordered td, .bordered th {
+        border-left: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        padding: 7px;
+        text-align: left;
+    }
+    .bordered th {
+        background-color: #dce9f9;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+        background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+        -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+        -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+        box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+        border-top: none;
+        text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    }
+    .bordered td:first-child, .bordered th:first-child {
+        border-left: none;
+    }
+    .bordered th:first-child {
+        -moz-border-radius: 6px 0 0 0;
+        -webkit-border-radius: 6px 0 0 0;
+        border-radius: 6px 0 0 0;
+    }
+    .bordered th:last-child {
+        -moz-border-radius: 0 6px 0 0;
+        -webkit-border-radius: 0 6px 0 0;
+        border-radius: 0 6px 0 0;
+    }
+    .bordered th:only-child{
+        -moz-border-radius: 6px 6px 0 0;
+        -webkit-border-radius: 6px 6px 0 0;
+        border-radius: 6px 6px 0 0;
+    }
+    .bordered tr:last-child td:first-child {
+        -moz-border-radius: 0 0 0 6px;
+        -webkit-border-radius: 0 0 0 6px;
+        border-radius: 0 0 0 6px;
+    }
+    .bordered tr:last-child td:last-child {
+        -moz-border-radius: 0 0 6px 0;
+        -webkit-border-radius: 0 0 6px 0;
+        border-radius: 0 0 6px 0;
+    }
+</style>
+<table class="bordered">
+    <tr>
+        <th>订单号</th>
+        <td>{$array['order_sn']}</td>
+    </tr>
+    <tr>
+        <th>预约人</th>
+        <td>{$array['buyer_name']}</td>
+    </tr>
+    <tr>
+        <th>患者电话</th>
+        <td>{$array['member_tel']}</td>
+    </tr>
+    <tr>
+        <th>患者身份证</th>
+        <td>{$array['member_card']}</td>
+    </tr>
+    <tr>
+        <th>就诊卡号</th>
+        <td>{if $array['member_medical_card']}{$array['member_medical_card']}{else}无{/if}</td>
+    </tr>
+    <tr>
+        <th>预约医生</th>
+        <td>{$array['a_name']}</td>
+    </tr>
+    <tr>
+        <th>挂号费</th>
+        <td>{$array['price']}</td>
+    </tr>
+    <tr>
+        <th>预约日期</th>
+        <td>{date:'Y-m-d',$array['a_date']}</td>
+    </tr>
+    <tr>
+        <th>订单总额</th>
+        <td>{$array['order_amount']}</td>
+    </tr>
+    <tr>
+        <th>预约码</th>
+        <td>{$array['reservation_code']}</td>
+    </tr>
+    <tr>
+        <th>订单状态</th>
+        <td>
+            {if $array['order_status']==0}<span style="color: #808080">已取消</span>{/if}
+            {if $array['order_status']==1}<span style="color: #000000">已预约</span>{/if}
+            {if $array['order_status']==2}<span style="color: #000000">已挂号</span>{/if}
+            {if $array['order_status']==3}<span style="color: green">已完成</span>{/if}
+        </td>
+    </tr>
+    <tr>
+        <th>订单生成时间</th>
+        <td>{date:'Y-m-d',$array['add_time']}</td>
+    </tr>
+    <tr>
+        <th>付款方式</th>
+        <td>
+            {if $array['payment_id']==0}无{else}{$array['payment_name']}{/if}
+        </td>
+    </tr>
+    <tr>
+        <th>付款时间</th>
+        <td>{if $array['payment_time']==0}无{else}{date:'Y-m-d',$array['payment_time']}{/if}</td>
+    </tr>
+</table>

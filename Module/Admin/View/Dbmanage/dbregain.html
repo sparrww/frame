@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Expires" CONTENT="0">
+    <title>数据库管理</title>
+
+    <!--[if IE]><script src="{jq:'jquery-1.11.1.min.js'}"></script><![endif]-->
+    <!--[if !IE]><!--><script src="{jq:'jquery-2.1.1.min.js'}"></script><!--<![endif]-->
+    <link href="{skin:'Css/css.css'}" rel="stylesheet" type="text/css" />
+    <link href="{jq:'ValidForm/css.css'}" rel="stylesheet" type="text/css"/>
+    <script src="{skin:'Js/tab.js'}"></script>
+    <script src="{jq:'ValidForm/validform.js'}"></script>
+    <script src="{skin:'Js/dbmanage.js'}"></script>
+    <style>
+        .botton{width:60px;height:25px;border:1px solid #ccc;margin:2px 5px}
+    </style>
+
+</head>
+
+<body>
+<div id="main">
+    <form name="checkboxform" method="post" action="" class="form">
+        <div id="main_top">
+            <dl id="article_ico">
+                <dd class="art_ico_8"><a href="{app_url:}dbmanage/dbbackup">备份数据</a></dd>
+                <dd class="art_ico_9"><a href="{app_url:}dbmanage/dbregain">恢复数据</a></dd>
+                <dd class="art_ico_6"><a href="{app_url:}dbmanage/dbmanages">管理备份</a></dd>
+            </dl>
+        </div>
+        <div id="art_body">
+            <table cellspacing="0" cellpadding="0" border="0" class="add_art">
+                <tr>
+                    <th colspan="2" style="text-align:center;font-size:16px">恢复数据</th>
+                </tr>
+                <tr>
+                    <th style="width:300px">恢复说明：</th>
+                    <td>您的数据库将备份到 “ /后台目录/Admin/dbbackup/ ”下面，备份格式为：当前日期_当前时间.sql</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th style="width:300px">恢复选择：</th>
+                    <td><select name="dbname" id="dbname">
+                        {if count($dblist)>0}
+                        {arsort($dblist)}
+                        {loop $dblist $v}
+                        <option value="{$v}">{$v}</option>
+                        {/loop}
+                        {else}
+                        <option value="">暂无备份</option>
+                        {/if}
+                    </select></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    {if count($dblist)>0}
+                    <td><input type="button" id="regain" class="p5_10" value="恢复数据" onclick="javascript:return confirm('您确定要恢复选择的备份数据吗？')"></td>
+                    {else}
+                    <td><input type="button" class="p5_10" value="暂无数据备份可以恢复"></td>
+                    {/if}
+                </tr>
+            </table>
+        </div>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>订单管理</title>
+
+    <link href="{skin:'Css/dialog.css'}" rel="stylesheet" type="text/css"/>
+    <link href="{skin:'Css/css.css'}" rel="stylesheet" type="text/css"/>
+    <!--[if IE]>
+    <script src="{jq:'jquery-1.11.1.min.js'}"></script><![endif]-->
+    <!--[if !IE]><!-->
+    <script src="{jq:'jquery-2.1.1.min.js'}"></script>
+    <!--<![endif]-->
+    <script src="{jq:'ValidForm/validform.js'}"></script>
+    <script src="{skin:'Js/artDialog.js'}"></script>
+    <script type="text/javascript">
+        $(function () {
+            data = $(".form").Validform({
+                tiptype: 2,
+                callback: function (data) {
+                    if (data.status == "y") {
+                        location.href = "{app_url:'/member/execution/re/1/message'}" + data.message;
+                    } else {
+                        location.href = "{app_url:'/member/execution/re/0/message'}" + data.message;
+                    }
+                }
+            });
+
+        });
+        function artAjax(art_id){
+            var dialog = art.dialog({
+                title: '订单',
+                padding: 10,
+                left:0,
+                top:0,
+                width: '50%'
+            });
+            $.ajax({
+                url: '{app_url:'/order/ajaxReturn/id/'}'+art_id,
+                success: function (data) {
+                    dialog.content(data);
+                }
+            });
+        }
+    </script>
+
+
+
+</head>
+
+<body>
+<div id="main" style="overflow:hidden;">
+    <form method="post" action="{app_url:'/link/sort'}" class="form">
+        <div id="main_top">
+            <dl id="article_ico">
+                <dd class="art_ico_9"><a
+                        href="javascript:void(0)">患者管理</a>
+                </dd>
+                {if $_GET['classid']!=""}
+                <dd class="art_ico_9"><a href="{app_url:'/link/index/classid/'.intval($_GET['fid'])}">返回上级</a></dd>
+                {/if}
+            </dl>
+        </div>
+        <div id="art_body">
+            <div id="art_list">
+                <table cellspacing="0">
+                    <tr>
+                        <th width="200">患者姓名</th>
+                        <th>性别</th>
+                        <th>患者电话</th>
+                        <th>身份证</th>
+                        <th>就诊卡号</th>
+                        <th width="200">操作</th>
+                    </tr>
+                    {loop $array['article_list'] $k $v}
+                    <tr class="bg_fff">
+                        <td>{if $v['member_truename']}{$v['member_truename']}{else}新用户{/if}</td>
+                        <td>{if $v['member_sex']==0}男{/if}{if $v['member_sex']==1}女{/if}</td>
+                        <td>{$v['member_tel']}</td>
+                        <td>{$v['member_card']}</td>
+                        <td>{$v['member_medical_card']}</td>
+                        <td>{if $array['edit']}
+                            <a href="{app_url:}member/edit/id/{$v['member_id']}">编辑</a>
+                            | {/if}
+                            {if $array['delete']}
+                            <a href="{app_url:'/member/delete/id/'.$v['member_id']}"
+                                 onclick="javascript:return confirm('您确定要删除“{$v['member_truename']}”患者吗？')">删除</a>
+                            {/if}
+                        </td>
+                    </tr>
+                    {/loop}
+                </table>
+            </div>
+            <div id="art_sxsz"></div>
+            <div id="art_fenye">
+                {$array['fy']}
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

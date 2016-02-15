@@ -1,0 +1,55 @@
+<div id="menu">
+    <div class="h-menu">
+        <div class="h-menu-t">
+
+            {if $array['base'] || $array['dbmanage']}
+            <div class="menu-box">
+                <h2 class="h-xt">系统</h2>
+                {if $array['base']}
+                <a href="{app_url:'/base/index'}" class="t1" target="main"><span>网站基本信息设置</span></a>
+                {/if}
+                {if $array['dbmanage']}
+                <a href="{app_url:'/dbmanage/dbbackup'}" class="t2" target="main"><span>数据库管理</span></a>
+                {/if}
+                <strong></strong>
+            </div>
+            {/if}
+
+            {if $array['article'] || $array['columns'] || $array['link']}
+            <div class="menu-box">
+                <h2 class="h-nr">内容</h2>
+                {if $array['article']}
+                <a href="{app_url:'/article/index'}" class="t1" target="main"><span>文章管理</span></a>
+                {/if}
+                {if $array['columns']}
+                <a href="{app_url:'/columns/index'}" class="t3"  target="main"><span>栏目管理</span></a>
+                {/if}
+                {if $array['link']}
+                <a href="{app_url:'/link/index'}" class="t4" target="main"><span>友情链接</span></a>
+                {/if}
+                {if $array['tag_link']}
+                <a href="{app_url:'/tagLink/index'}" class="t4" target="main"><span>关键词链接</span></a>
+                <strong></strong>
+                {/if}
+                <strong></strong>
+            </div>
+            {/if}
+
+            {if $array['member'] || $array['order'] || $array['user'] || $array['power'] || $array['log']}
+            <div class="menu-box">
+                <h2 class="h-yh">用户</h2>
+                {if $array['user']}
+                <a href="{app_url:}user/index" class="t3" target="main"><span>管理员列表</span></a>
+                {/if}
+                {if $array['power']}
+                <a href="{app_url:}power/index/" class="t4" target="main"><span>权限组管理</span></a>
+                {/if}
+                {if $array['log']}
+                <a href="{app_url:}log/index/" class="t5" target="main"><span>系统日志</span></a>
+                {/if}
+                <strong></strong>
+            </div>
+            {/if}
+        </div>
+    </div>
+</div>

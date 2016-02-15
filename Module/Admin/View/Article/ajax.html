@@ -1,0 +1,154 @@
+<style>
+    .bordered {
+        width: 600px;
+        margin: 40px auto;
+        font-family: 'trebuchet MS', 'Lucida sans', Arial;
+        font-size: 14px;
+        color: #444;
+
+        *border-collapse: collapse; /* IE7 and lower */
+        border-spacing: 0;
+        width: 100%;
+
+        border: solid #ccc 1px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        -webkit-box-shadow: 0 1px 1px #ccc;
+        -moz-box-shadow: 0 1px 1px #ccc;
+        box-shadow: 0 1px 1px #ccc;
+    }
+    .bordered tr:hover {
+        background: #fbf8e9;
+        -o-transition: all 0.1s ease-in-out;
+        -webkit-transition: all 0.1s ease-in-out;
+        -moz-transition: all 0.1s ease-in-out;
+        -ms-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+    }
+    .bordered td, .bordered th {
+        border-left: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        padding: 7px;
+        text-align: left;
+    }
+    .bordered th {
+        background-color: #dce9f9;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+        background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+        background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+        -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+        -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+        box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+        border-top: none;
+        text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    }
+    .bordered td:first-child, .bordered th:first-child {
+        border-left: none;
+    }
+    .bordered th:first-child {
+        -moz-border-radius: 6px 0 0 0;
+        -webkit-border-radius: 6px 0 0 0;
+        border-radius: 6px 0 0 0;
+    }
+    .bordered th:last-child {
+        -moz-border-radius: 0 6px 0 0;
+        -webkit-border-radius: 0 6px 0 0;
+        border-radius: 0 6px 0 0;
+    }
+    .bordered th:only-child{
+        -moz-border-radius: 6px 6px 0 0;
+        -webkit-border-radius: 6px 6px 0 0;
+        border-radius: 6px 6px 0 0;
+    }
+    .bordered tr:last-child td:first-child {
+        -moz-border-radius: 0 0 0 6px;
+        -webkit-border-radius: 0 0 0 6px;
+        border-radius: 0 0 0 6px;
+    }
+    .bordered tr:last-child td:last-child {
+        -moz-border-radius: 0 0 6px 0;
+        -webkit-border-radius: 0 0 6px 0;
+        border-radius: 0 0 6px 0;
+    }
+</style>
+<table class="bordered">
+    <tr>
+        <th width="80px">标题:</th>
+        <td>
+            {if $array['article']['img']}<img src="{$array['article']['img']}" width="250px" height="120px" style="vertical-align: middle;"/>{/if}
+            <span style="vertical-align: middle;">{$array['article']['title']}</span>
+        </td>
+    </tr>
+    <tr>
+        <th>所属分类:</th>
+        <td>
+            {$array['article']['columns_name']}
+        </td>
+    </tr>
+    <tr>
+        <th>来源:</th>
+        <td>
+            {$array['article']['origin']}
+        </td>
+    </tr>
+    <tr>
+        <th>点击数:</th>
+        <td>
+            {$array['article']['hits']}
+        </td>
+    </tr>
+    {if $array['article']['module_name']=='zjtd'}
+    <tr>
+        <th>职称:</th>
+        <td>
+            {$array['article']['academic_title']}
+        </td>
+    </tr>
+    <tr>
+        <th>荣誉:</th>
+        <td>
+            {$array['article']['honours']}
+        </td>
+    </tr>
+    <tr>
+        <th>擅长:</th>
+        <td>
+            {$array['article']['adept']}
+        </td>
+    </tr>
+    {/if}
+    <tr>
+        <th>文章状态:</th>
+        <td>
+            {if $array['article']['status']==1}已通过{/if}
+            {if $array['article']['status']==0}未通过{/if}
+        </td>
+    </tr>
+    <tr>
+        <th>添加/修改时间:</th>
+        <td>{date:'Y-m-d h:i:s',$array['article']['time']}</td>
+    </tr>
+    <tr>
+        <th>简介:</th>
+        <td>
+            {sub:$array['article']['info'],150}
+        </td>
+    </tr>
+    {if $array['article']['module_name']=='zt'}
+    <tr>
+        <th>网址:</th>
+        <td>
+            {$array['article']['html']}
+        </td>
+    </tr>
+    {else}
+    <tr>
+        <th>内容:</th>
+        <td>{$array['article']['content']}</td>
+    </tr>
+    {/if}
+</table>

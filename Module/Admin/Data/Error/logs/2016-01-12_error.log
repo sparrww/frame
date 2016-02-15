@@ -1,0 +1,113 @@
+[Message]:
+	Admin/Controller/homeController Object does not exist!
+[File]:
+	/System/Lib/Lib.php (80)
+[Trace]:
+	#0 [16-01-12 17:04:33] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	/Module/Admin/Controller/homegController.php File does not exist!
+[File]:
+	/System/Lib/Lib.php (130)
+[Trace]:
+	#0 [16-01-12 17:10:39]  Lib\Lib::__autoload(Admin\Controller\homegController)
+	#1 [16-01-12 17:10:39] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	/Module/Admin/Controller/homegController.php File does not exist!
+[File]:
+	/System/Lib/Lib.php (131)
+[Trace]:
+	#0 [16-01-12 17:11:18]  Lib\Lib::__autoload(Admin\Controller\homegController)
+	#1 [16-01-12 17:11:18] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	/Module/Admin/Controller/homegController.php File does not exist!
+[File]:
+	/System/Lib/Lib.php (131)
+[Trace]:
+	#0 [16-01-12 17:11:18]  Lib\Lib::__autoload(Admin\Controller\homegController)
+	#1 [16-01-12 17:11:18] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	/Module/Admin/Controller/homegController.php File does not exist!
+[File]:
+	/System/Lib/Lib.php (131)
+[Trace]:
+	#0 [16-01-12 17:11:19]  Lib\Lib::__autoload(Admin\Controller\homegController)
+	#1 [16-01-12 17:11:19] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	/Module/Admin/Controller/homegController.php File does not exist!
+[File]:
+	/System/Lib/Lib.php (131)
+[Trace]:
+	#0 [16-01-12 17:11:19]  Lib\Lib::__autoload(Admin\Controller\homegController)
+	#1 [16-01-12 17:11:19] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	/Module/Admin/Controller/homegController.php File does not exist!
+[File]:
+	/System/Lib/Lib.php (131)
+[Trace]:
+	#0 [16-01-12 17:11:20]  Lib\Lib::__autoload(Admin\Controller\homegController)
+	#1 [16-01-12 17:11:20] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	/Module/Admin/Controller/homfeController.php File does not exist!
+[File]:
+	/System/Lib/Lib.php (131)
+[Trace]:
+	#0 [16-01-12 17:11:25]  Lib\Lib::__autoload(Admin\Controller\homfeController)
+	#1 [16-01-12 17:11:25] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	/Module/Admin/Controller/homfeController.php File does not exist!
+[File]:
+	/System/Lib/Lib.php (130)
+[Trace]:
+	#0 [16-01-12 17:15:02]  Lib\Lib::__autoload(Admin\Controller\homfeController)
+	#1 [16-01-12 17:15:02] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	Admin/Controller/homeController Object does not exist!
+[File]:
+	/System/Lib/Lib.php (79)
+[Trace]:
+	#0 [16-01-12 17:15:43] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	Admin/Controller/homeController Object does not exist!
+[File]:
+	/System/Lib/Lib.php (79)
+[Trace]:
+	#0 [16-01-12 17:15:43] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	Admin/Controller/homeController Object does not exist!
+[File]:
+	/System/Lib/Lib.php (79)
+[Trace]:
+	#0 [16-01-12 17:15:43] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	Admin/Controller/homeController Object does not exist!
+[File]:
+	/System/Lib/Lib.php (79)
+[Trace]:
+	#0 [16-01-12 17:15:44] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	Admin/Controller/homeController Object does not exist!
+[File]:
+	/System/Lib/Lib.php (79)
+[Trace]:
+	#0 [16-01-12 17:15:58] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+
+[Message]:
+	Admin/Controller/homeController Object does not exist!
+[File]:
+	/System/Lib/Lib.php (79)
+[Trace]:
+	#0 [16-01-12 17:16:19] /index.php(10) require(D:\wamp\www\frame\System\App.php)
+

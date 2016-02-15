@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" CONTENT="no-cache">     
+<meta http-equiv="Cache-Control" CONTENT="no-cache">     
+<meta http-equiv="Expires" CONTENT="0">
+
+<title>网站设置</title>
+
+<link href="{skin:'Css/css.css'}" rel="stylesheet" type="text/css" />
+<link href="{jq:'ValidForm/css.css'}" rel="stylesheet" type="text/css" />
+
+<!--[if IE]><script src="{jq:'jquery-1.11.1.min.js'}"></script><![endif]-->
+<!--[if !IE]><!--><script src="{jq:'jquery-2.1.1.min.js'}"></script><!--<![endif]-->
+<script src="{jq:'ValidForm/validform.js'}"></script>
+<script src="{editer:'kindeditor.js'}"></script>
+<script src="{editer:'lang/zh_CN.js'}"></script>
+<script src="{skin:'Js/common.js'}"></script>
+
+<script type="text/javascript">
+$(function(){
+	data=$(".form").Validform({
+		tiptype:2,
+		callback:function(data){
+			if(data.status=="y"){
+				location.href =	"{app_url:'/columns/execution/re/1/message'}"+data.message;
+			}else{
+				location.href =	"{app_url:'/columns/execution/re/0/message'}"+data.message;
+
+			}
+		}
+	});
+
+	$("#save").click(function(){
+		data.ajaxPost();
+		$.Hidemsg();
+	});
+});
+</script>
+
+</head>
+<body>
+<div id="main">
+<form method="post" action="{app_url:'/columns/save/id/'.$columns['id']}" class="form">
+	<div id="main_top">
+		<dl id="article_ico">
+			<dd class="art_ico_8"><a href="javascript:void(0)" id="save">保存栏目</a></dd>
+            <dd class="art_ico_9"><a href="javascript:history.go(-1)">取消返回</a></dd>
+		</dl>
+	</div>
+	<div id="art_body">
+		<table cellspacing="0" class="add_art">
+			<tr>
+				<th>栏目名称：</th>
+				<td width="320"><input name="name" type="text" id="name" class="inputxt" style="width:300px"  nullmsg="栏目名称为能为空！" e value="{$columns['name']}" /></td>
+				<td><span class="article_notes colorf60">※：请输入栏目名称。</span></td>
+			</tr>
+			<tr>
+				<th>类型：</th>
+				<td width="320">
+					<input type="radio" name="type" class="type" value="1" {if $columns['type']=='1'}checked{/if} >&nbsp;&nbsp;模块&nbsp;&nbsp;
+					<input type="radio" name="type" class="type" value="2" {if $columns['type']=='2'}checked{/if} >&nbsp;&nbsp;外链
+				</td>
+				<td><span class="article_notes colorf60">※：请输入栏目名称。</span></td>
+			</tr>
+			<tr>
+				<th>导航显示：</th>
+				<td width="320">
+					<input type="radio" name="nav" id="nav" value="1" {if $columns['nav']=='1'}checked{/if} >&nbsp;&nbsp;是&nbsp;&nbsp;
+					<input type="radio" name="nav" id="nav" value="0" {if $columns['nav']=='0'}checked{/if} >&nbsp;&nbsp;否
+				</td>
+				<td><span class="article_notes colorf60">※：请输入栏目名称。</span></td>
+			</tr>
+			<tr>
+				<th>所属分类：</th>
+				<td width="320">
+				<select name="classid" id="classid" >
+					<option value="0" {if !$_GET['classid']}selected{/if}>导航栏目</option>
+					{$classSelect}
+				</select>
+				</td>
+				<td><span class="article_notes colorf60">※：请输入栏目名称。</span></td>
+			</tr>
+			<tr>
+				<th>模块名称：</th>
+				<td><input name="module" type="text" id="module" class="inputxt" style="width:300px" datatype="*1-255" nullmsg="模块名称不能为空！" errormsg="模块名称为1-10个字符！" value="{$columns['module']}" /></td>
+				<td><span class="article_notes colorf60">※：模块名称，必须为英文名称</span></td>
+			</tr>
+            <script type="text/javascript">
+                //设置编辑器
+                KindEditor.ready(function(K) {
+                    var editor = K.editor({
+                        allowFileManager : true
+                    });
+                    //加载上传图片
+                    K('#image').click(function() {
+                        editor.loadPlugin('image', function() {
+                            editor.plugin.imageDialog({
+                                showRemote : false,
+                                imageUrl : K('#img').val(),
+                                clickFn : function(url, title, width, height, border, align) {
+                                    K('#img').val(url);
+                                    editor.hideDialog();
+                                }
+                            });
+                        });
+                    });
+                });
+            </script>
+            <tr>
+                <th>栏目图片:</th>
+                <td>
+                    <input type="text" name="img" id="img" value="{$columns['img']}" class="inputxt" style="width:300px"/> <input type="button" id="image" value="选择图片" class="admin_button inputxt" style="width:100px;height:30px;" />
+                </td>
+                <td><span class="article_notes colorf60">※：上传栏目的封面图片。</span></td>
+            </tr>
+			<tr>
+				<th>链接方式：</th>
+				<td>
+				<select name="target" id="target">
+					<option value="0" {if $columns['target']=='0'}selected{/if}>当前页打开</option>
+					<option value="1" {if $columns['target']=='1'}selected{/if}>新窗口打开</option>
+				</select>
+				</td>
+                <td><span class="article_notes colorf60">※：请选择链接方式</span></td>
+			</tr>
+			{if $columns['type']=='1'}
+			<tr id="tpl">
+				<th>栏目模板：</th>
+				<td width="320"><input name="template" type="text" id="template" class="inputxt" style="width:300px" value="{$columns['template']}"/></td>
+				<td><span class="article_notes colorf60">※：栏目所选择的模板</span></td>
+			</tr>
+			{/if}
+            <tr>
+                <th>栏目标题：</th>
+                <td><input name="title" type="text" id="title" class="inputxt" style="width:300px"  value="{$columns['title']}" /></td>
+                <td><span class="article_notes colorf60">※：头部标题介绍</span></td>
+            </tr>
+            <tr>
+                <th>栏目关键词：</th>
+                <td><input name="keywords" type="text" id="keywords" class="inputxt" style="width:500px"  value="{$columns['keywords']}" /></td>
+                <td><span class="article_notes colorf60">※：头部关键词</span></td>
+            </tr>
+            <tr>
+                <th>栏目描述：</th>
+                <td colspan="2"><textarea name="description" id="description" class="inputxt" style="width:500px;height:120px">{$columns['description']}</textarea></td>
+                <td><span class="notes colorf60"><br/>※：头部描述</span></td>
+            </tr>
+            <tr>
+                <th>栏目内容:</th>
+                <td colspan="2"><textarea class="content" id="content" name="content" style="width:800px;height:800px;">{$columns['content']}</textarea></td>
+            </tr>
+		</table>
+	</div>
+</form>
+</div>
+ </body>
+</html>

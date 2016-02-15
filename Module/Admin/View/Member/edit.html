@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Expires" CONTENT="0">
+
+    <title>患者管理</title>
+
+    <link href="{skin:'Css/css.css'}" rel="stylesheet" type="text/css" />
+    <link href="{jq:'ValidForm/css.css'}" rel="stylesheet" type="text/css" />
+
+    <!--[if IE]><script src="{jq:'jquery-1.11.1.min.js'}"></script><![endif]-->
+    <!--[if !IE]><!--><script src="{jq:'jquery-2.1.1.min.js'}"></script><!--<![endif]-->
+    <script src="{jq:'ValidForm/validform.js'}"></script>
+    <script src="{skin:'js/common.js'}"></script>
+
+    <script type="text/javascript">
+
+        window.onload=function(){
+            data=$(".form").Validform({
+                tiptype:2,
+                callback:function(data){
+                    if(data.status=="y"){
+                        location.href =	"{app_url:'/member/execution/re/1/message'}"+data.message;
+                    }else{
+                        location.href =	"{app_url:'/member/execution/re/0/message'}"+data.message;
+                    }
+                }
+            });
+
+
+            $("#save").click(function(){
+                data.ajaxPost();
+                $.Hidemsg();
+            });
+        };
+    </script>
+
+</head>
+<body>
+<div id="main">
+    <form method="post" action="{app_url:'/member/save/id/'.$_GET['id']}" class="form">
+        <div id="main_top">
+            <dl id="article_ico">
+                <dd class="art_ico_8"><a href="javascript:void(0)" id="save">保存链接</a></dd>
+                <dd class="art_ico_9"><a href="javascript:history.go(-1)">取消返回</a></dd>
+            </dl>
+        </div>
+        <div id="art_body">
+            <table cellspacing="0" class="add_art">
+                <tr>
+                    <th>患者姓名：</th>
+                    <td width="320"><input name="member_truename" type="text" id="member_truename" class="inputxt" style="width:300px" datatype="*1-30" nullmsg="患者姓名不能为空！" errormsg="链接名称为1-30个字符！" value="{$array['member']['member_truename']}" /></td>
+                    <td><span class="article_notes colorf60">※：请输入患者姓名。</span></td>
+                </tr>
+                <tr>
+                    <th>性别：</th>
+                    <td width="320">
+                        <input type="radio" name="member_sex"  value="0" {if $array['member']['member_sex']==0}checked{/if}>&nbsp;&nbsp;男&nbsp;&nbsp;
+                        <input type="radio" name="member_sex"  value="1" {if $array['member']['member_sex']==1}checked{/if}>&nbsp;&nbsp;女
+                    </td>
+                    <td><span class="article_notes colorf60">※：选择患者性别。</span></td>
+                </tr>
+                <tr>
+                    <th>患者电话：</th>
+                    <td><input name="member_tel" type="text" id="member_tel" class="inputxt" value="{$array['member']['member_tel']}" style="width:300px" datatype="m" nullmsg="患者电话不能为空！"/></td>
+                    <td><span class="article_notes colorf60">※：请输入患者电话。</span></td>
+                </tr>
+                <tr>
+                    <th>患者身份证：</th>
+                    <td><input name="member_card" type="text" id="member_card" class="inputxt" value="{$array['member']['member_card']}" style="width:300px" datatype="idcard" nullmsg="患者身份证不能为空！"/></td>
+                    <td><span class="article_notes colorf60">※：请输入患者身份证。</span></td>
+                </tr>
+                <tr>
+                    <th>患者就诊卡号：</th>
+                    <td><input name="member_medical_card" type="text" id="member_medical_card" class="inputxt" value="{$array['member']['member_medical_card']}" style="width:300px"/></td>
+                    <td><span class="article_notes colorf60">※：请输入患者就诊卡号。</span></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+</body>
+</html>
